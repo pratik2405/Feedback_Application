@@ -1,0 +1,81 @@
+﻿@model IEnumerable<CodingRound.Models.FeedbackResponse>
+
+@{
+    ViewData["Title"] = "ShowFeedback";
+}
+<html>
+<head>
+    <style>
+        body {
+            background: linear-gradient(to bottom, #2b5876, #4e4376);
+        }
+
+        table {
+            background-color: white;
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            width: 1000px;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+
+<table class="table">
+    <thead>
+        <tr>
+                <th colspan="6"><h2>View Feedbacks</h2></th>
+        </tr>
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FeedbackId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PositiveEmotions)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImprovementAreas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PositiveComments)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImprovementFeedback)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FeedbackId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PositiveEmotions)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImprovementAreas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PositiveComments)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImprovementFeedback)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>
+</html>

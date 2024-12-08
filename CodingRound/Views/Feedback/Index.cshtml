@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Feedback>
+@{
+    ViewData["Title"] = "Index";
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head><title></title>
+    <style>
+        body {
+            background: linear-gradient(to bottom, #2b5876, #4e4376);
+        }
+
+        table {
+            background-color: white;
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            width:1000px;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>    
+    </head>
+    <body>
+
+<table class="text-center">
+    <thead>
+        <tr>
+            <th>
+                <h2>Feedback Links</h2>
+                </th>
+            <th colspan="2" class="text-end">
+                    <form method="post" asp-action="Create">
+                        <input type="text" name="feedbackName" placeholder="Feedback Name" required />
+                        <button type="submit">Create New Feedback</button>
+                    </form>
+            </th>
+
+        </tr>
+        <tr>
+            <th>Feedback Name</th>
+            <th>Link</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var feedback in Model)
+        {
+            <tr>
+                <td>@feedback.FeedbackText</td>
+                <td>
+                    <a href="@Url.Action("Create", "FeedbackResponse", new { link = feedback.UniqueIdentifier ,id=feedback.FeedbackId })" target="_blank">
+                        @Url.Action("Create", "FeedbackResponse", new { link = feedback.UniqueIdentifier, id = feedback.FeedbackId })
+                    </a>
+                </td>
+                <td>
+                    <form method="get" action="@Url.Action("Create", "FeedbackResponse", new { link = feedback.UniqueIdentifier ,id = feedback.FeedbackId })">
+                        <button type="submit" class="btn btn-primary">Open</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,114 @@
+﻿@model IEnumerable<CodingRound.Models.FeedbackResponse>
+@{
+    var positiveEmotionsOptions = ViewBag.PositiveEmotionsOptions as List<string>;
+    var improvementAreasOptions = ViewBag.ImprovementAreasOptions as List<string>;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Dashboard</title>
+    <style>
+        body{
+            background: linear-gradient(to bottom, #2b5876, #4e4376);
+        }
+        table {
+            background-color:white;
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        h1{
+            color:white
+        }
+        th, td {
+           border: 1px solid #ddd; 
+            padding: 10px;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+
+        .center-text {
+            text-align: center;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+            button:hover {
+                background-color: #0056b3;
+            }
+
+            textarea{
+                width:200px
+            }
+    </style>
+</head>
+<body>
+    <h1>Feedback Dashboard</h1>
+
+    <form method="post" action="/FeedbackResponse/UpdateFeedback">
+        <table>
+            <thead class="text-center">
+                <tr>
+                    <th>Feedback Name: 1</th>
+                    <th>Positive Emotions</th>
+                    <th>Improvement Areas</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (!Model.Any())
+                {
+                    <tr>
+                        <td colspan="5" class="text-center">No feedback responses available.</td>
+                    </tr>
+                }
+                else
+                {
+                    int count = 1;
+                    foreach (var feedback in Model)
+                    {
+                        <tr>
+                            <td class="text-center">Anonymous @count</td>
+                            <td>
+                                @foreach (var emotion in positiveEmotionsOptions)
+                                {
+                                    <label>
+                                        <input type="checkbox" readonly name="PositiveEmotions_@feedback.Id" value="@emotion" @(feedback.PositiveEmotions?.Contains(emotion) == true ? "checked" : "") />
+                                        @emotion
+                                    </label>
+                                }
+                                <br />
+                                <textarea name="PositiveComments_@feedback.Id">@feedback.PositiveComments</textarea>
+                            </td>
+                            <td>
+                                @foreach (var area in improvementAreasOptions)
+                                {
+                                    <label>
+                                        <input type="checkbox" readonly name="ImprovementAreas_@feedback.Id" value="@area" @(feedback.ImprovementAreas?.Contains(area) == true ? "checked" : "") />
+                                        @area
+                                    </label> 
+                                  
+                                }
+                                <br />
+                                <textarea name="ImprovementFeedback_@feedback.Id">@feedback.ImprovementFeedback</textarea>
+                            </td>
+                        </tr>
+                        count++;
+                    }
+                }
+            </tbody>
+        </table>
+    </form>
+</body>
+</html>
