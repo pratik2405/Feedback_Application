@@ -5,7 +5,7 @@ The Employee Feedback Application is built using ASP.NET Core MVC with Entity Fr
 The application provides an intuitive platform for employees to submit anonymous feedback, view their feedback history, and share feedback links with specific departments or colleagues.
 
 
-The application is fully responsive for enhanced user experience.
+The application is fully responsive for enhanced user experience and use **DI Pattern** for remove more dependency from classes .
 
 
 ## Features :-
@@ -37,6 +37,8 @@ Logged-in users can view their submitted feedback history.
 **8.Unique Feedback Links :**
 Employees can generate unique feedback links for specific departments or individuals.
 
+**9. Logout :** Clear all Session Data and redirect to home page.
+
 ## Technology used:
 
                      Framework: ASP.NET Core MVC
@@ -57,7 +59,6 @@ Stores user details:
                      Email
 
                      Password
-![Screenshot 2024-12-09 020511](https://github.com/user-attachments/assets/ca60bb07-ea6e-4ca8-8d6d-b3690a118c8d)
 ![Screenshot 2024-12-09 020533](https://github.com/user-attachments/assets/23ccddd7-2dec-4da6-9d4f-946986543d05)
 
 
@@ -71,7 +72,6 @@ Stores feedback details:
                      UniqueLink
 
                      CreatedAt
-![Screenshot 2024-12-09 020453](https://github.com/user-attachments/assets/8e10c6ec-d17a-4958-9e48-7c573ea7688a)
 ![Screenshot 2024-12-09 020550](https://github.com/user-attachments/assets/d75e6986-c5c1-4516-975d-fe0085fd4ac6)
 
 
@@ -89,7 +89,6 @@ Stores feedback responses:
                      PositiveComments
 
                      ImprovementFeedback
-![Screenshot 2024-12-09 020229](https://github.com/user-attachments/assets/5d014997-d0f4-4f3c-890a-419b9776a100)
 ![Screenshot 2024-12-09 023505](https://github.com/user-attachments/assets/5b713651-52e1-4b4b-ae8c-5b455adeb04d)
 
 
